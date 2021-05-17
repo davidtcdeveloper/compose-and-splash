@@ -22,10 +22,30 @@ class FeedViewModel : ViewModel() {
             delay(1000)
             _todoItems.value = FeedState.Loaded(
                 items = listOf(
-                    Item(title = "Title 1", description = "Description 1"),
-                    Item(title = "Title 2", description = "Description 2"),
-                    Item(title = "Title 3", description = "Description 3"),
-                    Item(title = "Title 4", description = "Description 4"),
+                    Item(
+                        title = "Title 1",
+                        description = "Description 1",
+                        image = "https://picsum.photos/300/300",
+                        imageContentDescription = "Content description of the random image"
+                    ),
+                    Item(
+                        title = "Title 2",
+                        description = "Description 2",
+                        image = "https://picsum.photos/300/300",
+                        imageContentDescription = "Content description of the random image"
+                    ),
+                    Item(
+                        title = "Title 3",
+                        description = "Description 3",
+                        image = "https://picsum.photos/300/300",
+                        imageContentDescription = "Content description of the random image"
+                    ),
+                    Item(
+                        title = "Title 4",
+                        description = "Description 4",
+                        image = "https://picsum.photos/300/300",
+                        imageContentDescription = "Content description of the random image"
+                    ),
                 )
             )
         }
