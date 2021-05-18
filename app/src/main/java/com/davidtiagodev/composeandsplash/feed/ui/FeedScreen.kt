@@ -17,7 +17,7 @@ import com.davidtiagodev.composeandsplash.ui.theme.ComposeAndSplashTheme
 
 @Composable
 fun FeedScreen(viewModel: FeedViewModel) {
-    val state by viewModel.todoItems.observeAsState(FeedState.Loaded(emptyList()))
+    val state by viewModel.feedState.observeAsState(FeedState.Loaded(emptyList()))
 
     Scaffold(
         topBar = {

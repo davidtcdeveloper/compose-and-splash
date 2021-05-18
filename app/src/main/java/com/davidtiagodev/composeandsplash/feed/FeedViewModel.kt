@@ -9,18 +9,18 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class FeedViewModel : ViewModel() {
-    private var _todoItems = MutableLiveData<FeedState>(FeedState.Loaded(emptyList()))
-    val todoItems: LiveData<FeedState> = _todoItems
+    private var _feedState = MutableLiveData<FeedState>(FeedState.Loaded(emptyList()))
+    val feedState: LiveData<FeedState> = _feedState
 
     init {
         refresh()
     }
 
     fun refresh() {
-        _todoItems.value = FeedState.Loading
+        _feedState.value = FeedState.Loading
         viewModelScope.launch {
             delay(1000)
-            _todoItems.value = FeedState.Loaded(
+            _feedState.value = FeedState.Loaded(
                 items = listOf(
                     Item(
                         title = "Title 1",
