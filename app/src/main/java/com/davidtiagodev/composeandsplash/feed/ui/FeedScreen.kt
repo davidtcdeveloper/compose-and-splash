@@ -10,7 +10,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.davidtiagodev.composeandsplash.feed.FeedState
 import com.davidtiagodev.composeandsplash.feed.FeedViewModel
 import com.davidtiagodev.composeandsplash.ui.theme.ComposeAndSplashTheme
@@ -44,7 +43,7 @@ fun FeedScreen(viewModel: FeedViewModel) {
 fun BodyContent(modifier: Modifier, state: FeedState) {
     when (state) {
         is FeedState.Loaded -> {
-            Column(modifier = modifier.padding(8.dp)) {
+            Column(modifier = modifier) {
                 FeedList(state.items)
             }
         }
