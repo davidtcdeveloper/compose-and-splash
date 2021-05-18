@@ -2,12 +2,16 @@ package com.davidtiagodev.composeandsplash.feed.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.davidtiagodev.composeandsplash.R
 import com.davidtiagodev.composeandsplash.feed.data.Item
 import com.davidtiagodev.composeandsplash.ui.theme.ComposeAndSplashTheme
@@ -64,6 +68,7 @@ fun FeedItem(
             ),
             contentDescription = item.imageContentDescription,
         )
+        Spacer(Modifier.width(8.dp))
         Text(
             text = item.title,
             style = typography.h3,
@@ -72,6 +77,7 @@ fun FeedItem(
             text = item.description,
             style = typography.body1,
         )
+        Spacer(Modifier.width(16.dp))
     }
 }
 
