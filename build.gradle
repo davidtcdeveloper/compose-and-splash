@@ -2,8 +2,27 @@
 buildscript {
     ext {
         compose_version = '1.0.0-beta06'
+        ext.kotlin_version = "1.4.32"
+
+        // Local variables
+        def lifecycleVersion = "2.2.0"
+        common = [
+                //Dependency Injection
+                'com.google.dagger:hilt-android:2.29.1-alpha',
+                'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02',
+        ]
+        kaptDepencencies = [
+                //Dependency Injection
+                'com.google.dagger:hilt-android-compiler:2.29.1-alpha',
+                'androidx.hilt:hilt-compiler:1.0.0-alpha02',
+        ]
+        network = [
+                "com.squareup.retrofit2:retrofit:2.9.0",
+                "com.squareup.okhttp3:okhttp:4.9.0",
+                "com.squareup.okhttp3:logging-interceptor:4.9.0",
+                "com.squareup.retrofit2:converter-moshi:2.9.0",
+        ]
     }
-    ext.kotlin_version = "1.4.32"
     repositories {
         google()
         mavenCentral()
@@ -11,6 +30,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.1.0-alpha01'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28.1-alpha'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
