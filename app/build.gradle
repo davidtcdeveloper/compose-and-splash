@@ -20,6 +20,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField "String", "API_ACCESS_KEY", "${project.properties['com.davidtiago.composeandsplash.api_access_key']}"
     }
 
     buildTypes {
