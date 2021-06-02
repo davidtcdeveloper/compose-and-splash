@@ -45,9 +45,12 @@ android {
         kotlinCompilerExtensionVersion compose_version
         kotlinCompilerVersion '1.4.32'
     }
-    kapt {
-        correctErrorTypes true
-    }
+}
+kapt {
+    correctErrorTypes true
+}
+hilt {
+    enableExperimentalClasspathAggregation = true
 }
 
 dependencies {
