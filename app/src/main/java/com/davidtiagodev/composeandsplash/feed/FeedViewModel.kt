@@ -5,10 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.davidtiagodev.composeandsplash.feed.data.Item
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FeedViewModel : ViewModel() {
+@HiltViewModel
+class FeedViewModel  @Inject constructor() : ViewModel() {
     private var _feedState = MutableLiveData<FeedState>(FeedState.Loaded(emptyList()))
     val feedState: LiveData<FeedState> = _feedState
 

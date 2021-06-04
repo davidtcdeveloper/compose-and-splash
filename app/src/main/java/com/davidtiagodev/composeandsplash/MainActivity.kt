@@ -9,9 +9,11 @@ import androidx.compose.material.Surface
 import com.davidtiagodev.composeandsplash.feed.FeedViewModel
 import com.davidtiagodev.composeandsplash.feed.ui.FeedScreen
 import com.davidtiagodev.composeandsplash.ui.theme.ComposeAndSplashTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val viewModel by viewModels<FeedViewModel>()
+    private val viewModel: FeedViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
