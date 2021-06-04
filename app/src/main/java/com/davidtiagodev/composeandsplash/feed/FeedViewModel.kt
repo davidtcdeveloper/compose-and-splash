@@ -4,14 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.davidtiagodev.composeandsplash.feed.data.FeedRepository
 import com.davidtiagodev.composeandsplash.feed.data.Item
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FeedViewModel  @Inject constructor() : ViewModel() {
+class FeedViewModel @Inject constructor(
+    private val feedRepository: FeedRepository,
+) : ViewModel() {
     private var _feedState = MutableLiveData<FeedState>(FeedState.Loaded(emptyList()))
     val feedState: LiveData<FeedState> = _feedState
 
@@ -22,33 +24,9 @@ class FeedViewModel  @Inject constructor() : ViewModel() {
     fun refresh() {
         _feedState.value = FeedState.Loading
         viewModelScope.launch {
-            delay(1000)
-            _feedState.value = FeedState.Loaded(
-                items = listOf(
-                    Item(
-                        title = "Title 1",
-                        description = "Description 1",
-                        image = "https://picsum.photos/300/300",
-                        imageContentDescription = "Content description of the random image"
-                    ),
-                    Item(
-                        title = "Title 2",
-                        description = "Description 2",
-                        image = "https://picsum.photos/300/300",
-                        imageContentDescription = "Content description of the random image"
-                    ),
-                    Item(
-                        title = "Title 3",
-                        description = "Description 3",
-                        image = "https://picsum.photos/300/300",
-                        imageContentDescription = "Content description of the random image"
-                    ),
-                    Item(
-                        title = "Title 4",
-                        description = "Description 4",
-                        image = "https://picsum.photos/300/300",
-                        imageContentDescription = "Content description of the random image"
-                    ),
+            _feedState.postValue(
+                FeedState.Loaded(
+                    items = feedRepository.loadFeed()
                 )
             )
         }

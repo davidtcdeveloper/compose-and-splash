@@ -50,12 +50,3 @@ fun BodyContent(modifier: Modifier, state: FeedState) {
         FeedState.Loading -> LoadingFeed()
     }
 }
-
-@Preview
-@Composable
-fun PreviewFeedScreen() {
-    val viewModel = FeedViewModel() // TODO Add items
-    ComposeAndSplashTheme {
-        FeedScreen(viewModel)
-    }
-}

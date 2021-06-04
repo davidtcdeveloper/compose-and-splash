@@ -48,10 +48,6 @@ fun FeedItem(
             text = item.title,
             style = typography.h3,
         )
-        Text(
-            text = item.description,
-            style = typography.body1,
-        )
         Spacer(Modifier.width(16.dp))
     }
 }
@@ -62,19 +58,16 @@ fun PreviewFeedList() {
     val items = listOf(
         Item(
             title = "Title 1",
-            description = "Description 1",
             image = "https://picsum.photos/300/300",
             imageContentDescription = "Content description of the random image"
         ),
         Item(
             title = "Title 2",
-            description = "Description 2",
             image = "https://picsum.photos/300/300",
             imageContentDescription = "Content description of the random image"
         ),
         Item(
             title = "Title 3",
-            description = "Description 3",
             image = "https://picsum.photos/300/300",
             imageContentDescription = "Content description of the random image"
         ),
@@ -91,7 +84,6 @@ fun PreviewFeedItem() {
         FeedItem(
             Item(
                 title = "This is a title",
-                description = "This is a description",
                 image = "https://picsum.photos/300/300",
                 imageContentDescription = "Content description of the random image"
             )
