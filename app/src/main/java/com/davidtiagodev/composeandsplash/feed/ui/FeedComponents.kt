@@ -28,6 +28,33 @@ fun FeedList(feedItems: List<Item>) {
     }
 }
 
+@Composable
+fun FeedItem(
+    item: Item,
+) {
+    Column {
+        Image(
+            painter = rememberCoilPainter(
+                request = item.image,
+                fadeIn = true,
+                previewPlaceholder = R.drawable.ic_launcher_background,
+            ),
+            contentDescription = item.imageContentDescription,
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        Spacer(Modifier.width(8.dp))
+        Text(
+            text = item.title,
+            style = typography.h3,
+        )
+        Text(
+            text = item.description,
+            style = typography.body1,
+        )
+        Spacer(Modifier.width(16.dp))
+    }
+}
 
 @Preview
 @Composable
@@ -54,34 +81,6 @@ fun PreviewFeedList() {
     )
     ComposeAndSplashTheme {
         FeedList(feedItems = items)
-    }
-}
-
-@Composable
-fun FeedItem(
-    item: Item,
-) {
-    Column {
-        Image(
-            painter = rememberCoilPainter(
-                request = item.image,
-                fadeIn = true,
-                previewPlaceholder = R.drawable.ic_launcher_background,
-            ),
-            contentDescription = item.imageContentDescription,
-            contentScale = ContentScale.FillWidth,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        Spacer(Modifier.width(8.dp))
-        Text(
-            text = item.title,
-            style = typography.h3,
-        )
-        Text(
-            text = item.description,
-            style = typography.body1,
-        )
-        Spacer(Modifier.width(16.dp))
     }
 }
 
