@@ -1,12 +1,12 @@
 package com.davidtiagodev.composeandsplash.feed
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.davidtiagodev.composeandsplash.feed.data.FeedRepository
 import com.davidtiagodev.composeandsplash.feed.data.Item
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,17 +14,19 @@ import javax.inject.Inject
 class FeedViewModel @Inject constructor(
     private val feedRepository: FeedRepository,
 ) : ViewModel() {
-    private var _feedState = MutableLiveData<FeedState>(FeedState.Loaded(emptyList()))
-    val feedState: LiveData<FeedState> = _feedState
+
+    private val _feedFlow = MutableStateFlow<FeedState>(FeedState.Loading)
+    val feedFlow: Flow<FeedState>
+        get() = _feedFlow
 
     init {
         refresh()
     }
 
     fun refresh() {
-        _feedState.value = FeedState.Loading
         viewModelScope.launch {
-            _feedState.postValue(
+            _feedFlow.emit(FeedState.Loading)
+            _feedFlow.emit(
                 FeedState.Loaded(
                     items = feedRepository.loadFeed()
                 )
