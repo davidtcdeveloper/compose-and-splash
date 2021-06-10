@@ -2,6 +2,7 @@
 buildscript {
     ext {
         ext.kotlin_version = "1.5.10"
+        ext.composeVersion = '1.0.0-beta08'
 
         core = [
                 "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
@@ -20,13 +21,16 @@ buildscript {
                 "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha01",
                 "androidx.lifecycle:lifecycle-common-java8:2.4.0-alpha01",
         ]
-
-        compose_version = '1.0.0-beta08'
         compose = [
-                "androidx.activity:activity-compose:1.3.0-beta01",
-                "androidx.compose.ui:ui:$compose_version",
-                "androidx.compose.material:material:$compose_version",
-                "androidx.compose.ui:ui-tooling:$compose_version",
+                "androidx.compose.runtime:runtime:$composeVersion",
+                "androidx.compose.ui:ui:$composeVersion",
+                "androidx.compose.foundation:foundation:$composeVersion",
+                "androidx.compose.foundation:foundation-layout:$composeVersion",
+                "androidx.compose.material:material:$composeVersion",
+                "androidx.compose.ui:ui-tooling:$composeVersion",
+                "androidx.compose.material:material-icons-extended:$composeVersion",
+                "androidx.activity:activity-compose:$composeVersion",
+                "androidx.navigation:navigation-compose:2.4.0-alpha01",
                 "com.google.accompanist:accompanist-coil:0.11.1",
         ]
         // Local variables
@@ -52,7 +56,7 @@ buildscript {
         androidTest = [
                 "androidx.test.ext:junit:1.1.2",
                 "androidx.test.espresso:espresso-core:3.3.0",
-                "androidx.compose.ui:ui-test-junit4:$compose_version",
+                "androidx.compose.ui:ui-test-junit4:$composeVersion",
         ]
     }
     repositories {
