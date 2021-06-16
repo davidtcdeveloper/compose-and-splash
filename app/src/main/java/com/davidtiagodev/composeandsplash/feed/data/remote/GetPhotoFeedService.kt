@@ -2,7 +2,7 @@ package com.davidtiagodev.composeandsplash.feed.data.remote
 
 import retrofit2.http.GET
 
-interface GetPhotosService {
+interface GetPhotoFeedService {
     @GET("/photos")
     suspend fun get(): List<Photo>
 }

@@ -1,6 +1,6 @@
 package com.davidtiagodev.composeandsplash.feed.di
 
-import com.davidtiagodev.composeandsplash.feed.data.remote.GetPhotosService
+import com.davidtiagodev.composeandsplash.feed.data.remote.GetPhotoFeedService
 import com.davidtiagodev.composeandsplash.network.RetrofitClientCreator
 import dagger.Module
 import dagger.Provides
@@ -14,6 +14,6 @@ object FeedModule {
 
     @Provides
     @ActivityRetainedScoped
-    fun provideRandomPictureService(retrofitClientCreator: RetrofitClientCreator): GetPhotosService =
-        retrofitClientCreator.create().create(GetPhotosService::class.java)
+    fun provideRandomPictureService(retrofitClientCreator: RetrofitClientCreator): GetPhotoFeedService =
+        retrofitClientCreator.create().create(GetPhotoFeedService::class.java)
 }
