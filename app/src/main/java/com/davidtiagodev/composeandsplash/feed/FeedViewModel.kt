@@ -2,7 +2,7 @@ package com.davidtiagodev.composeandsplash.feed
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.davidtiagodev.composeandsplash.feed.data.FeedRepository
+import com.davidtiagodev.composeandsplash.feed.data.LatestRepository
 import com.davidtiagodev.composeandsplash.feed.data.Item
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FeedViewModel @Inject constructor(
-    private val feedRepository: FeedRepository,
+    private val feedRepository: LatestRepository,
 ) : ViewModel() {
 
     private val _feedFlow = MutableStateFlow<FeedState>(FeedState.Loading)
@@ -28,7 +28,7 @@ class FeedViewModel @Inject constructor(
             _feedFlow.emit(FeedState.Loading)
             _feedFlow.emit(
                 FeedState.Loaded(
-                    items = feedRepository.loadFeed()
+                    items = feedRepository.loadLatest()
                 )
             )
         }
