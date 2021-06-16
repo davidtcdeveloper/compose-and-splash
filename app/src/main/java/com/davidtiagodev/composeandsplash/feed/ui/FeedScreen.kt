@@ -13,11 +13,9 @@ import com.davidtiagodev.composeandsplash.feed.FeedState
 import com.davidtiagodev.composeandsplash.feed.FeedViewModel
 
 @Composable
-fun FeedScreen() {
-    val viewModel: FeedViewModel = viewModel()
-
+fun FeedScreen(feedViewModel: FeedViewModel = viewModel()) {
     val lifecycleOwner = LocalLifecycleOwner.current
-    val flow = viewModel.feedFlow
+    val flow = feedViewModel.feedFlow
     val locationFlowLifecycleAware = remember(flow, lifecycleOwner) {
         flow.flowWithLifecycle(lifecycleOwner.lifecycle, Lifecycle.State.STARTED)
     }

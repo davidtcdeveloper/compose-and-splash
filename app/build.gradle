@@ -59,7 +59,6 @@ dependencies {
     implementation lifecycle
     implementation compose
     implementation network
-    implementation common
     kapt kaptDepencencies
     testImplementation test
     androidTestImplementation androidTest

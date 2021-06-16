@@ -7,11 +7,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.davidtiagodev.composeandsplash.feed.FeedViewModel
 import com.davidtiagodev.composeandsplash.feed.ui.FeedScreen
 import com.davidtiagodev.composeandsplash.feed.ui.PhotosTabRow
 import com.davidtiagodev.composeandsplash.ui.theme.ComposeAndSplashTheme
@@ -67,10 +69,12 @@ fun PhotosNavHost(
         modifier = modifier
     ) {
         composable(PhotoScreen.Feed.name) {
-            FeedScreen()
+            val viewModel: FeedViewModel = hiltViewModel()
+            FeedScreen(viewModel)
         }
         composable(PhotoScreen.Popular.name) {
-            FeedScreen()
+            val viewModel: FeedViewModel = hiltViewModel()
+            FeedScreen(viewModel)
         }
     }
 }
